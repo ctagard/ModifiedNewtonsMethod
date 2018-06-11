@@ -42,3 +42,5 @@ xvect = np.linspace(1,2,num=101) # Vector from 1 to 2
 jvect = j(xvect,2) # j evaluated at xvect with x2 = 2
 plt.plot(xvect,jvect) 
 plt.show()
+
+#This is cool
