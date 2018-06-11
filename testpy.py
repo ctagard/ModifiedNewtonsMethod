@@ -3,27 +3,36 @@ import sympy as sy
 import scipy as sp
 from scipy import optimize
 from sympy import *
-
-x, y, z = symbols ('x y z')
-init_printing(use_unicode=True)
-
-
-
+import matplotlib.pyplot as plt
 
 def f(x):
     return (x**2)
 
+def fprime(x):
+    return (2*x)
 
 def g(x):
     return (x**3)
 
+def gprime(x):
+    return (3*x)
 
-def h(x):
-    return ((-1/diff(f(x), x)) + (f(x) + x/diff(f(x), x)))
+def h(x,x1):
+    return (-x/fprime(x1) + (f(x1) + x1/fprime(x1)))
 
-def j(x):
-    return (g(x) - h(x))
+def j(x,x1):
+    return (g(x) - h(x,x1))
 
-root = optimize.newton(j(x), 1.0)
+#x, x1, y, z = symbols ('x x1 y z')
+init_printing(use_unicode=True)
+
+#print(h(2,4))
+root = optimize.newton(j, 1.0,args=(2,))
 
 print(root)
+
+# Check the solution graphically
+xvect = np.linspace(1,2,num=101) # Vector from 1 to 2
+jvect = j(xvect,2) # j evaluated at xvect with x2 = 2
+plt.plot(xvect,jvect)
+plt.show()
