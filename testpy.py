@@ -34,7 +34,7 @@ print(root)
 
 #Integrate the 'root' value into the distance formula
 for x1 in range(1,10,1):
-    distance = ((root - x1)**2 + (g(root) - f(x1))**2)**2 #distance formula
+    distance = ((root - x1)**2 + (g(root) - f(x1))**2)**.5 #distance formula
     print('Distance for a function for x' +str(x1),distance)
 
 # Check the solution graphically
